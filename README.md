@@ -24,13 +24,15 @@ Setup Instructions
 git clone https://github.com/colemmorgan/osc-hackathon.git
 
 2. Install Dependencies
-Frontend (React and Tailwind CSS, Python)
+(React and Tailwind CSS, Python)
 Pip install -r requirements.txt
 npm install
 
 3. Set Up the Database
 
 4. Set Up FastApi
+
+5. Run Project
 
 Contributors
 Cole Morgan, Savio

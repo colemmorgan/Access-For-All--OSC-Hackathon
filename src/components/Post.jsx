@@ -1,13 +1,17 @@
+import { useState, useEffect } from "react";
 import generateRandomGradient from "../utils/generateRandomGradient";
 
 function Post() {
-  // console.log(gradient)
+  const [gradient, setGradient] = useState(null);
+
+  useEffect(() => setGradient(generateRandomGradient()), []);
+
   return (
     <div>
       <div className="flex items-start gap-4 my-5 relative z-50 w-[90%]">
         <div
           className="w-8 h-8 border-[2px] border-gray-400 rounded-full"
-          style={{ background: generateRandomGradient() }}
+          style={{ background: gradient }}
         ></div>
 
         <div className="flex flex-col w-full leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl shadow-md">

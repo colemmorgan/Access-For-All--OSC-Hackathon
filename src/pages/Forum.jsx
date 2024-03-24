@@ -1,6 +1,22 @@
 import Post from "../components/Post";
+import { useState } from "react";
 
 function Forum() {
+  const [formData, setFormData] = useState("");
+
+  const handleChange = (event) => {
+    // Update formData state on every input change
+    setFormData(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Log the form data when the form is submitted
+    console.log(formData);
+  };
+
   return (
     <div className="bg-white">
       <div className="w-full mx-auto my-0 max-w-[55%]">
@@ -20,7 +36,7 @@ function Forum() {
             </p>
           </div>
           <div className="flex items-center justify-center mt-8">
-            <form className="relative z-50 w-full">
+            <form className="relative z-50 w-full" onSubmit={handleSubmit}>
               <div className="mb-4 border border-gray-200 rounded-lg shadow-md bg-gray-50">
                 <div className="relative w-auto px-4 py-2 bg-white rounded-t-lg">
                   <label className="sr-only">Your comment</label>
@@ -29,6 +45,8 @@ function Forum() {
                     rows="4"
                     className="w-full text-left text-gray-900 placeholder-left bg-white border-0 outline-none placeholder:-translate-y-6 focus:ring-0 dark:placeholder-gray-400"
                     placeholder="Write a comment..."
+                    value={formData}
+                    onChange={handleChange}
                     required
                   />
                 </div>

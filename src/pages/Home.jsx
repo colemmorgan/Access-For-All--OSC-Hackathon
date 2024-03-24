@@ -2,17 +2,39 @@ import { useState, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
 
 const people = [
-  { name: "CHOOSE A UF WEBSITE TO CHECK" },
-  { name: "recsports" },
-  { name: "uflib" },
-  { name: "cise" },
-  { name: "datascience" },
+  { name: "Choose a UF webpage to check" },
+  { name: "Office of Admissions" },
+  { name: "College of Ag. and Life Sciences" },
+  { name: "UF ADA Compliance" },
+  { name: "ACIS – Advanced Computing and Infor..." },
 ];
 
-function Home() {
+
+
+function Home({ sites }) {
   const [selected, setSelected] = useState(people[0]);
+
+  const handleButtonClick = () => {
+    if (selected.name !== "Choose a UF webpage to check") {
+      let url;
+      if (selected.name == "Office of Admissions") {
+         url = '/page/100'
+      }
+      else if (selected.name == "College of Ag. and Life Sciences") {
+           url = '/page/108'
+      }
+      else if (selected.name == "UF ADA Compliance") {
+           url = '/page/118'
+      }
+      else if (selected.name == "ACIS – Advanced Computing and Infor...") {
+           url = '/page/102'
+      }
+      window.location.href = url;
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -29,17 +51,16 @@ function Home() {
             }}
           />
         </div>
-        <div className="max-w-2xl py-32 mx-auto">
+        <div className="max-w-2xl py-24 mx-auto">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              OSC Hack
+              Access For All
             </h1>
             <p className="mt-6 leading-8 text-[1.05rem] text-gray-600">
               Many websites lack proper accessiblity features, creating barriers
               for people with disabilities to access essential information and
               services provided by the University of Florida. This app aims to
-              highlight and rectify all problems and generally make stuff better
-              and easier to use
+              highlight and rectify accessability issues on UF websites.
             </p>
 
             <div className="flex items-center justify-center">
@@ -99,28 +120,31 @@ function Home() {
                 </div>
               </Listbox>
               <div className="flex items-center justify-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md bg-indigo-600 ml-3 mt-5 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <div
+                  
+                  onClick={handleButtonClick}
+                  className="rounded-md bg-indigo-600 ml-3 mt-5 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  {"->"}
-                </a>
+                  {"Search"}
+                </div>
               </div>
             </div>
             <div className="flex items-center justify-center mt-10 gap-x-6">
               <span className="font-bold">Other tools</span>
-              <a
+              <Link
+                to={"/forum"}
                 href="#"
                 className="text-sm font-semibold leading-6 text-gray-900 underline decoration-sky-500 decoration-2"
               >
                 View forum
-              </a>
-              <a
+              </Link>
+              <Link
+                to={"/sites"}
                 href="#"
                 className="text-sm font-semibold leading-6 text-gray-900 underline decoration-sky-500 decoration-2"
               >
                 View all sites
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -137,16 +161,20 @@ function Home() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center mb-8 -mt-20">
+      <div className="flex items-center justify-center mb-8 -mt-8">
         <h1 className="text-3xl font-bold text-gray-900 underline decoration-purple-500 decoration-4">
           Least Accessible Sites
         </h1>
       </div>
 
       <div className="flex items-center justify-center mb-8 gap-x-4">
-        <Card />
-        <Card />
-        <Card />
+        {sites
+          .slice()
+          .sort((a, b) => b.aria_count - a.aria_count)
+          .slice(0, 3)
+          .map((site) => (
+            <Card site={site} key={site.id} />
+          ))}
       </div>
     </div>
   );

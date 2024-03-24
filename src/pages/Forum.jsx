@@ -45,7 +45,7 @@ function Forum() {
       );
       console.log(response.data);
 
-      getPosts()
+      getPosts();
     } catch (err) {
       console.error(err);
     }
@@ -64,9 +64,9 @@ function Forum() {
               </h2>
             </div>
             <p className="my-4 text-lg text-black">
-              Start developing with an open-source library of over 450+ UI
-              components, sections, and pages built with the utility classes
-              from Tailwind CSS and designed in Figma.
+              Start a discussion about accessability at the University of
+              Florida! Communicate any concerns, tips, and problems you may
+              experience while accessing UF sites with the community.
             </p>
           </div>
           <div className="flex items-center justify-center mt-8">
@@ -163,14 +163,18 @@ function Forum() {
       </div>
       {/* SVG for background */}
 
+      {/*  */}
+
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svgjs="http://svgjs.dev/svgjs"
           viewBox="0 0 800 450"
-          opacity="0.6"
-          className="fixed top-0 bottom-0 left-0 right-0 -z-1"
+          className="fixed top-0 bottom-0 left-0 right-0 -z-1 h-full w-full"
           preserveAspectRatio="none"
+          opacity="0.48"
         >
           <defs>
             <filter
@@ -184,7 +188,7 @@ function Forum() {
               colorInterpolationFilters="sRGB"
             >
               <feGaussianBlur
-                stdDeviation="69"
+                stdDeviation="40"
                 x="0%"
                 y="0%"
                 width="100%"
@@ -197,20 +201,25 @@ function Forum() {
           </defs>
           <g filter="url(#bbblurry-filter)">
             <ellipse
-              rx="263"
-              ry="261.5"
-              cx="110.4917125985059"
-              cy="-129.7923660017812"
-              fill="hsla(290, 87%, 47%, 1.00)"
-              data-darkreader-inline-fill=""
+              rx="150"
+              ry="176.5"
+              cx="-9.041958263757238"
+              cy="-3.0160994001853396"
+              fill="hsla(290, 67%, 56%, 1.00)"
             ></ellipse>
             <ellipse
-              rx="263"
-              ry="261.5"
-              cx="855.965330587147"
-              cy="569.757694379168"
-              fill="hsla(272, 99%, 54%, 1.00)"
-              data-darkreader-inline-fill=""
+              rx="150"
+              ry="176.5"
+              cx="800.3976384801607"
+              cy="129.92499550104654"
+              fill="hsla(212, 72%, 59%, 1.00)"
+            ></ellipse>
+            <ellipse
+              rx="150"
+              ry="176.5"
+              cx="-47.855295407366725"
+              cy="389.47579631535706"
+              fill="hsla(290, 92%, 41%, 1.00)"
             ></ellipse>
           </g>
         </svg>

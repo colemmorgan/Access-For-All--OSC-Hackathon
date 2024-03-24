@@ -12,6 +12,15 @@ class UserData(BaseModel):
     content: str
 
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with the origin(s) you want to allow
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
+
 @app.post("/api/createpost")
 def create_user(user_data: UserData):
     # Process the user data

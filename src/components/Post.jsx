@@ -20,11 +20,11 @@ function Post({text, time}) {
               Anonymous
             </span>
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-              {time}
+              {time} 
             </span>
           </div>
-          <p className="text-sm font-normal py-2.5 text-gray-900">
-            {text}
+          <p className="text-sm font-normal py-2.5text-gray-900">
+          {text}
           </p>
         </div>
       </div>

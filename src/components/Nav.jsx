@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Home", href: "/" },
+  { name: "Sites", href: "/sites" },
   { name: "Forum", href: "/forum" },
-  { name: "TTS", href: "#" },
-  { name: "About", href: "#" },
 ];
 
 function Nav() {
@@ -18,7 +17,7 @@ function Nav() {
           <span className="sr-only">...</span>
           <img
             className="w-auto h-8"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="image.png"
             alt=""
           />
         </a>

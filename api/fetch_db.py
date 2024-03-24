@@ -142,7 +142,10 @@ def get_all_sites():
 
 def get_specific_site(title):
     conn = psycopg2.connect(
-        "host=34.135.71.145 dbname=oschack user=postgres password=BestPasswordEver"
+        host="34.135.71.145",
+        dbname="oschack",
+        user="postgres",
+        password="BestPasswordEver",
     )
     cursor = conn.cursor()
     errors = []

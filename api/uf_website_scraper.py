@@ -12,7 +12,7 @@ class Browser:
         options = Options()
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
         options.add_argument(f'user-agent={user_agent}')
-        s = Service('drivers/chromedriver.exe')
+        s = Service(r'C:\Users\colem\Desktop\osc-hackathon\api\drivers\chromedriver.exe')
         self.browser = webdriver.Chrome(service=s, options=options)
 
     def find_a_tag(self):
@@ -42,7 +42,7 @@ def slice_links(links):
     for link in links:
         if "a-z-website-listing" in link:
             links.remove(link)
-    links = links[0:5]
+    links = links[0:20]
     return links
 
 def get_links():

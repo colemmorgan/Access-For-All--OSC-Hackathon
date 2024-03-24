@@ -1,6 +1,4 @@
 import psycopg2
-from pprint import pprint
-from psycopg2 import Error
 
 
 

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fetch_db import *
+from fetch_db import get_all_sites, get_specific_site
 
 
 url = "http://www.admissions.ufl.edu/"
@@ -13,7 +13,7 @@ def get_sites():
     return get_all_sites()
 
 @app.get("/api/{title}")
-def get_sites(title : str):
+def get_single_site(title : str):
     return get_specific_site(title)
 
 @app.get("/")

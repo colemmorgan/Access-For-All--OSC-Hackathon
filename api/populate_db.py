@@ -135,6 +135,3 @@ def create_post(post_text: str):
     conn.commit()
     cursor.close()
     conn.close()
-
-
-create_post("test")

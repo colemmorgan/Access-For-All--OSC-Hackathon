@@ -1,6 +1,7 @@
 import { useState, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import MostErrors from "../components/MostErrors";
 
 const people = [
   { name: "CHOOSE A UF WEBSITE TO CHECK" },
@@ -136,6 +137,7 @@ function Home() {
           />
         </div>
       </div>
+      <MostErrors/>
     </div>
   );
 }

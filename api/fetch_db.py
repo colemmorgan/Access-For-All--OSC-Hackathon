@@ -1,12 +1,23 @@
 import psycopg2
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get database connection parameters from environment variables
+HOST_NAME = os.getenv("HOST_NAME")
+DB_NAME = os.getenv("DB_NAME")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 
 
 def get_posts_from_db():
     conn = psycopg2.connect(
-        host="34.135.71.145",
-        dbname="oschack",
-        user="postgres",
-        password="BestPasswordEver",
+        host=HOST_NAME,
+        dbname=DB_NAME,
+        user=USERNAME,
+        password=PASSWORD,
     )
     cursor = conn.cursor()
 
@@ -100,7 +111,10 @@ def get_contrast(cursor, title):
 
 def get_all_sites():
     conn = psycopg2.connect(
-        "host=34.135.71.145 dbname=oschack user=postgres password=BestPasswordEver"
+        host=HOST_NAME,
+        dbname=DB_NAME,
+        user=USERNAME,
+        password=PASSWORD,
     )
     cursor = conn.cursor()
 
@@ -142,10 +156,10 @@ def get_all_sites():
 
 def get_specific_site(title):
     conn = psycopg2.connect(
-        host="34.135.71.145",
-        dbname="oschack",
-        user="postgres",
-        password="BestPasswordEver",
+        host=HOST_NAME,
+        dbname=DB_NAME,
+        user=USERNAME,
+        password=PASSWORD,
     )
     cursor = conn.cursor()
     errors = []

@@ -161,7 +161,7 @@ function Home({ sites }) {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center mb-8 -mt-8">
+      <div className="flex items-center justify-center mb-6 -mt-4">
         <h1 className="text-3xl font-bold text-gray-900 underline decoration-purple-500 decoration-4">
           Least Accessible Sites
         </h1>

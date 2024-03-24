@@ -1,6 +1,16 @@
 import psycopg2
 import requests
 from uf_website_scraper import get_links
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+HOST_NAME = os.getenv("HOST_NAME")
+DB_NAME = os.getenv("DB_NAME")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
+API_KEY=os.getenv("API_KEY")
 
 
 def truncateTable(cur):
@@ -104,13 +114,16 @@ def insertData(cur, response):
 
 def main():
     conn = psycopg2.connect(
-        "host=34.135.71.145 dbname=oschack user=postgres password=BestPasswordEver"
+        host=HOST_NAME,
+        dbname=DB_NAME,
+        user=USERNAME,
+        password=PASSWORD,
     )
     cur = conn.cursor()
     truncateTable(cur)
     links = get_links()
     for link in links:
-        api_url = f"https://wave.webaim.org/api/request?key={"MU7HUc153725"}&reporttype=2&url={link}"
+        api_url = f"https://wave.webaim.org/api/request?key={API_KEY}&reporttype=2&url={link}"
         response = requests.get(api_url)
 
         # Check if the request was successful (status code 200)
@@ -128,10 +141,10 @@ def main():
 
 def create_post(post_text: str):
     conn = psycopg2.connect(
-        host="34.135.71.145",
-        dbname="oschack",
-        user="postgres",
-        password="BestPasswordEver",
+        host=HOST_NAME,
+        dbname=DB_NAME,
+        user=USERNAME,
+        password=PASSWORD,
     )
     cursor = conn.cursor()
     cursor.execute(f"INSERT INTO blog_posts(post_content) VALUES('{post_text}')")

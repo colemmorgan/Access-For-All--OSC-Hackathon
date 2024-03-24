@@ -18,20 +18,14 @@ function Forum() {
   }, []);
 
   const handleChange = (event) => {
-    // Update formData state on every input change
     setFormData(event.target.value);
   };
 
   const handleSubmit = async (event) => {
-    // Prevent the default form submission behavior
     event.preventDefault();
 
-    // Log the form data when the form is submitted
-    console.log("Form Data is:");
-    console.log(formData);
-
     try {
-      // const response = await postFormComment(`${BASE_URL}/api/makepost`, data);
+  
       const response = await axios.post(
         "http://localhost:8000/api/createpost",
         {

@@ -11,11 +11,10 @@ function Forum() {
   useEffect(() => {
     async function getPosts() {
       const response = await axios.get("http://localhost:8000/api/posts");
-      setPosts(response)
-      console.log(response)
+      setPosts(response.data)
     }
     getPosts()
-  }), [];
+  }, []);
 
   const handleChange = (event) => {
     // Update formData state on every input change
@@ -150,10 +149,7 @@ function Forum() {
 
           <br />
 
-          {/* <Post />
-          <Post />
-          <Post />
-          <Post /> */}
+          {posts.map((post) => <Post key={post.id} text={post.post_content} time={post.timestamp} />)}
         </div>
       </div>
       {/* SVG for background */}

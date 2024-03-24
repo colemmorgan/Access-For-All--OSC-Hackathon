@@ -1,6 +1,7 @@
 import Post from "../components/Post";
 import postFormComment from "../utils/post";
 import { BASE_URL } from "../utils/constants";
+import axios from "axios";
 import { useState } from "react";
 
 function Forum() {
@@ -16,18 +17,26 @@ function Forum() {
     event.preventDefault();
 
     // Log the form data when the form is submitted
-    console.log("gfdsugtfudsgfjhdsgfjhsdgfjhdsgfjhd");
+    console.log("Form Data is:");
     console.log(formData);
 
     try {
       // const response = await postFormComment(`${BASE_URL}/api/makepost`, data);
-      const response = await fetch(`${BASE_URL}/api/makepost`, {
-        method: "POST",
-        body: formData,
-      });
-      console.log(response);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/createpost",
+        {
+          formData,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 

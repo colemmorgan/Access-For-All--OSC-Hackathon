@@ -1,4 +1,6 @@
 import Post from "../components/Post";
+import postFormComment from "../utils/post";
+import { BASE_URL } from "../utils/constants";
 import { useState } from "react";
 
 function Forum() {
@@ -9,12 +11,24 @@ function Forum() {
     setFormData(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();
 
     // Log the form data when the form is submitted
+    console.log("gfdsugtfudsgfjhdsgfjhsdgfjhdsgfjhd");
     console.log(formData);
+
+    try {
+      // const response = await postFormComment(`${BASE_URL}/api/makepost`, data);
+      const response = await fetch(`${BASE_URL}/api/makepost`, {
+        method: "POST",
+        body: formData,
+      });
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -126,13 +140,13 @@ function Forum() {
       </div>
       {/* SVG for background */}
 
-      <div className="">
+      <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           viewBox="0 0 800 450"
           opacity="0.6"
-          className="fixed top-0 bottom-0 left-0 right-0 -z-1 h-full w-full"
+          className="fixed top-0 bottom-0 left-0 right-0 -z-1"
           preserveAspectRatio="none"
         >
           <defs>

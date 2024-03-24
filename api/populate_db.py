@@ -137,4 +137,4 @@ def create_post(post_text: str):
     conn.close()
 
 
-create_post("test")
+# create_post("test")

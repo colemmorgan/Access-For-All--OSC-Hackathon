@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import MostErrors from "../components/MostErrors";
+import Card from "../components/Card";
 
 const people = [
   { name: "CHOOSE A UF WEBSITE TO CHECK" },
@@ -119,7 +119,7 @@ function Home() {
                 href="#"
                 className="text-sm font-semibold leading-6 text-gray-900 underline decoration-sky-500 decoration-2"
               >
-                Text to Speech
+                View all sites
               </a>
             </div>
           </div>
@@ -137,7 +137,17 @@ function Home() {
           />
         </div>
       </div>
-      <MostErrors/>
+      <div className="flex items-center justify-center mb-8 -mt-20">
+        <h1 className="text-3xl font-bold text-gray-900 underline decoration-purple-500 decoration-4">
+          Least Accessible Sites
+        </h1>
+      </div>
+
+      <div className="flex items-center justify-center mb-8 gap-x-4">
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "Forum", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "Forum", href: "/forum" },
   { name: "TTS", href: "#" },
   { name: "About", href: "#" },
 ];
@@ -8,12 +10,12 @@ const navigation = [
 function Nav() {
   return (
     <nav
-      className="flex items-center justify-between p-6 lg:px-8"
+      className="relative z-50 flex items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
       <div className="flex lg:flex-1">
         <a href="#" className="-m-1.5 p-1.5">
-          <span className="sr-only">Your Company</span>
+          <span className="sr-only">...</span>
           <img
             className="w-auto h-8"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -24,13 +26,13 @@ function Nav() {
       <div className="flex lg:hidden"></div>
       <div className="hidden lg:flex lg:gap-x-12">
         {navigation.map((item) => (
-          <a
+          <Link
             key={item.name}
-            href={item.href}
+            to={item.href}
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             {item.name}
-          </a>
+          </Link>
         ))}
       </div>
       <div className="hidden lg:flex lg:flex-1 lg:justify-end">

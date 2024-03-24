@@ -135,3 +135,9 @@ def create_post(post_text: str):
     conn.commit()
     cursor.close()
     conn.close()
+<<<<<<< HEAD
+=======
+
+
+# create_post("test")
+>>>>>>> c9b1388752532f82c241cc6c59f8194a528ef9c4

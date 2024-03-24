@@ -1,7 +1,6 @@
 import generateRandomGradient from "../utils/generateRandomGradient";
 
 function Post() {
-  
   // console.log(gradient)
   return (
     <div>

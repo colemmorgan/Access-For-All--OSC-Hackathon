@@ -8,7 +8,9 @@ function Forum() {
           <div className="mt-20">
             <div className="">
               <h2 className="text-4xl font-bold text-black">
-                <span className="relative z-50 px-4 py-1 text-white bg-purple-500 rounded-lg">Forum</span>
+                <span className="relative z-50 px-4 py-1 text-white bg-purple-500 rounded-lg">
+                  Forum
+                </span>
               </h2>
             </div>
             <p className="my-4 text-lg text-black">

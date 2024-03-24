@@ -1,8 +1,12 @@
 import psycopg2
 
+
 def get_posts_from_db():
     conn = psycopg2.connect(
-        "host=34.135.71.145 dbname=oschack user=postgres password=BestPasswordEver"
+        host="34.135.71.145",
+        dbname="oschack",
+        user="postgres",
+        password="BestPasswordEver",
     )
     cursor = conn.cursor()
 
@@ -10,7 +14,7 @@ def get_posts_from_db():
     rows = cursor.fetchall()
     filtered_rows = []
     for row in rows:
-        id,post_content,timestamp = row
+        id, post_content, timestamp = row
         row_dict = {"id": id, "post_content": post_content, "timestamp": timestamp}
         filtered_rows.append(row_dict)
     return filtered_rows

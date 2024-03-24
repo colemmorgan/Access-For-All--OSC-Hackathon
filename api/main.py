@@ -2,22 +2,21 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from populate_db import create_post
 from fetch_db import get_all_sites, get_specific_site, get_posts_from_db
+from pydantic import BaseModel
 
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["Content-Type"],
-)
+
+class UserData(BaseModel):
+    content: str
 
 
-@app.post("/api/makepost")
-async def make_post(post_text: str):
-    return create_post(post_text)
+@app.post("/api/createpost")
+def create_user(user_data: UserData):
+    # Process the user data
+    create_post(user_data.content)
+    return {"message": "User data received successfully", "received": user_data.content}
 
 
 @app.get("/api/posts")

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import generateRandomGradient from "../utils/generateRandomGradient";
 
-function Post() {
+function Post({text, time}) {
   const [gradient, setGradient] = useState(null);
 
   useEffect(() => setGradient(generateRandomGradient()), []);
@@ -20,12 +20,11 @@ function Post() {
               Anonymous
             </span>
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-              11:45 AM 23 March
+              {time}
             </span>
           </div>
           <p className="text-sm font-normal py-2.5 text-gray-900">
-            {"That's"} awesome. I think our users will really appreciate the
-            improvements.
+            {text}
           </p>
         </div>
       </div>

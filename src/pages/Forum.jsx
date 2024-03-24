@@ -2,10 +2,20 @@ import Post from "../components/Post";
 import postFormComment from "../utils/post";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Forum() {
   const [formData, setFormData] = useState("");
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function getPosts() {
+      const response = await axios.get("http://localhost:8000/api/posts");
+      setPosts(response)
+      console.log(response)
+    }
+    getPosts()
+  }), [];
 
   const handleChange = (event) => {
     // Update formData state on every input change
@@ -23,12 +33,11 @@ function Forum() {
     try {
       // const response = await postFormComment(`${BASE_URL}/api/makepost`, data);
       const response = await axios.post(
-        "http://127.0.0.1:8000/createpost",
+        "http://localhost:8000/api/createpost",
         {
-          formData,
+          content: formData,
         },
         {
-          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
@@ -36,7 +45,7 @@ function Forum() {
       );
       console.log(response.data);
     } catch (err) {
-      // console.error(err);
+      console.error(err);
     }
   };
 
@@ -141,10 +150,10 @@ function Forum() {
 
           <br />
 
+          {/* <Post />
           <Post />
           <Post />
-          <Post />
-          <Post />
+          <Post /> */}
         </div>
       </div>
       {/* SVG for background */}

@@ -126,13 +126,13 @@ function Forum() {
       </div>
       {/* SVG for background */}
 
-      <div>
+      <div className="">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           viewBox="0 0 800 450"
           opacity="0.6"
-          className="fixed top-0 bottom-0 left-0 right-0 -z-1"
+          className="fixed top-0 bottom-0 left-0 right-0 -z-1 h-full w-full"
           preserveAspectRatio="none"
         >
           <defs>

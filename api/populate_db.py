@@ -142,5 +142,14 @@ def main():
     cur.close()
     conn.close()
 
-if __name__ == "__main__":
-    main()
+def create_post(post_text : str):
+    conn = psycopg2.connect("host=34.135.71.145 dbname=oschack user=postgres password=BestPasswordEver")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO blog_posts(post_content) VALUES(%s)",(
+        post_text,
+    ))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+create_post("test")

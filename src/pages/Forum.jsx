@@ -6,14 +6,15 @@ import { useEffect, useState } from "react";
 
 function Forum() {
   const [formData, setFormData] = useState("");
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+
+  async function getPosts() {
+    const response = await axios.get("http://localhost:8000/api/posts");
+    setPosts(response.data);
+  }
 
   useEffect(() => {
-    async function getPosts() {
-      const response = await axios.get("http://localhost:8000/api/posts");
-      setPosts(response.data)
-    }
-    getPosts()
+    getPosts();
   }, []);
 
   const handleChange = (event) => {
@@ -43,6 +44,8 @@ function Forum() {
         }
       );
       console.log(response.data);
+
+      getPosts()
     } catch (err) {
       console.error(err);
     }
@@ -149,7 +152,13 @@ function Forum() {
 
           <br />
 
-          {posts.map((post) => <Post key={post.id} text={post.post_content} time={post.timestamp} />)}
+          {posts.toReversed().map((post) => (
+            <Post
+              key={post.id}
+              text={post.post_content}
+              time={post.timestamp}
+            />
+          ))}
         </div>
       </div>
       {/* SVG for background */}
